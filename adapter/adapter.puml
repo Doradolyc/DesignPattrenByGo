@@ -1,0 +1,25 @@
+@startuml
+namespace adapter {
+    class Banner << (S,Aquamarine) >> {
+        + Str string
+
+        + ShowWithParen() 
+        + ShowWithAster() 
+
+    }
+    interface Print  {
+        + PrintWeak() 
+        + PrintString() 
+
+    }
+    class PrintBanner << (S,Aquamarine) >> {
+        + PrintWeak() 
+        + PrintString() 
+
+    }
+}
+"adapter.Banner" *-- "adapter.PrintBanner"
+
+"adapter.Print" <|-- "adapter.PrintBanner"
+
+@enduml

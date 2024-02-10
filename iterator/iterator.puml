@@ -1,0 +1,41 @@
+@startuml
+namespace iterator {
+    interface Aggregate  {
+        - getIterator() Iterator
+
+    }
+    class Book << (S,Aquamarine) >> {
+        - name string
+
+        - getName() string
+
+    }
+    class BookShelf << (S,Aquamarine) >> {
+        - books []*Book
+        - index int
+
+        - getBookAt(index int) *Book
+        - appendBook(book *Book) 
+        - getLength() int
+        - getIterator() Iterator
+
+    }
+    class BookShelfIterator << (S,Aquamarine) >> {
+        - bookShelf *BookShelf
+        - index int
+
+        - hasNext() bool
+        - next() <font color=blue>interface</font>{}
+
+    }
+    interface Iterator  {
+        - hasNext() bool
+        - next() <font color=blue>interface</font>{}
+
+    }
+}
+
+"iterator.Aggregate" <|-- "iterator.BookShelf"
+"iterator.Iterator" <|-- "iterator.BookShelfIterator"
+
+@enduml
